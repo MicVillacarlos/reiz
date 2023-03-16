@@ -1,6 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
-// import { ListType, ListTypesItems } from "../types/types";
+import { useEffect, useState } from "react";
 
 const useQuery = () => {
   const [postData, setPostData] = useState<any>();
