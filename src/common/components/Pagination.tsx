@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import { MdArrowCircleRight, MdArrowCircleLeft } from "react-icons/md";
 
 type Props = {
-  totalItems: number;
+  totalItems?: number;
   itemsPerPage: number;
   currentPage: number;
-  setCurrentPage: any;
-};
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+}
 
 const Pagination = (props: Props) => {
   const [pageRangeFirst, setPageRangeFirst] = useState<number>();
@@ -15,7 +15,7 @@ const Pagination = (props: Props) => {
   const { totalItems, itemsPerPage, currentPage, setCurrentPage } = props;
   let pages: number[] = [];
 
-  for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(totalItems! / itemsPerPage); i++) {
     pages.push(i);
   }
 
@@ -45,13 +45,13 @@ const Pagination = (props: Props) => {
           leftIcon={<MdArrowCircleLeft />}
           onClick={() => setCurrentPage(currentPage - 1)}
         />
-        {pageNumbers.map((page, index) => {
+        {pageNumbers.map((page, key) => {
           return (
             <>
               <Button
                 colorScheme="yellow"
                 variant={currentPage === page ? "solid" : "outline"}
-                key={index}
+                key={key}
                 onClick={() => setCurrentPage(page)}
               >
                 {page}

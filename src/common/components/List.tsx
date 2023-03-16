@@ -3,7 +3,7 @@ import { ListTypesItems } from "../types/types";
 import { MdOutlineAreaChart, MdLocationOn, MdMap } from "react-icons/md";
 
 type Props = {
-  data: ListTypesItems[];
+  data?: ListTypesItems[];
 };
 
 const ListItems = (props: Props) => {
@@ -11,7 +11,7 @@ const ListItems = (props: Props) => {
 
   return (
     <>
-      {data?.map((item) => {
+      {data?.map((item, key) => {
         return (
           <List
             spacing={1.5}
@@ -20,6 +20,7 @@ const ListItems = (props: Props) => {
             backgroundColor={"teal.50"}
             margin={5}
             padding={2}
+            key={key}
           >
             <ListItem fontWeight={1000}>
               <ListIcon as={MdLocationOn} />
