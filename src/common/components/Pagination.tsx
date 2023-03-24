@@ -45,13 +45,13 @@ const Pagination = (props: Props) => {
           leftIcon={<MdArrowCircleLeft />}
           onClick={() => setCurrentPage(currentPage - 1)}
         />
-        {pageNumbers.map((page, key) => {
+        {pageNumbers.map((page,index) => {
           return (
             <>
               <Button
                 colorScheme="yellow"
                 variant={currentPage === page ? "solid" : "outline"}
-                key={key}
+                key={index}
                 onClick={() => setCurrentPage(page)}
               >
                 {page}

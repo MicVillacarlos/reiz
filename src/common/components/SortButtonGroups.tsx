@@ -32,21 +32,57 @@ const SortButtonGroups = (props: Props) => {
   };
 
   const onClickHandlerSortDescending = () => {
-    
     setCurrentPage(1);
+    const sortedData = unFilteredData?.map((item)=>item).sort((a, b) => {
+      let nameA = a.name.toLowerCase();
+      let nameB = b.name.toLowerCase();
+
+      if (nameA > nameB) {
+        return -1;
+      }
+      if (nameA < nameB) {
+        return 1;
+      }
+      return 0
+    });
+    setFilteredData(sortedData)
   };
 
   const onClickHandlerSortAscending = () => {
     setCurrentPage(1);
+    const sortedData = unFilteredData?.map((item)=>item).sort((a, b) => {
+      let nameA = a.name.toLowerCase();
+      let nameB = b.name.toLowerCase();
+
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0
+    });
+
+    setFilteredData(sortedData)
   };
 
   return (
     <Flex margin={2} alignItems={"center"} justifyContent={"flex-start"}>
       Sort:
-      <Button background={"yellow.100"} fontSize={"sm"} margin={1}>
+      <Button
+        background={"yellow.100"}
+        fontSize={"sm"}
+        margin={1}
+        onClick={onClickHandlerSortAscending}
+      >
         A-Z
       </Button>
-      <Button background={"yellow.100"} fontSize={"sm"} margin={1}>
+      <Button
+        background={"yellow.100"}
+        fontSize={"sm"}
+        margin={1}
+        onClick={onClickHandlerSortDescending}
+      >
         Z-A
       </Button>
       <Divider orientation="vertical" height={"3em"} margin={3} />
